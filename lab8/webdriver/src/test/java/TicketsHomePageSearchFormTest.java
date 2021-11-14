@@ -12,7 +12,7 @@ public class TicketsHomePageSearchFormTest {
     private WebDriver driver;
     private FirefoxOptions options = new FirefoxOptions().setHeadless(true);
 
-    private String exeptionText = "Станции отправления и прибытия совпадают. Измените, пожалуйста, данные для успешного поиска.";
+    private String errorText = "Станции отправления и прибытия совпадают. Измените, пожалуйста, данные для успешного поиска.";
 
     @BeforeMethod(alwaysRun = true)
     public void setupBrowser() {
@@ -35,7 +35,7 @@ public class TicketsHomePageSearchFormTest {
                     .selectDate()
                     .clickButtonSearch();
 
-        Assert.assertEquals(resultsPage.getExceptionText(),exeptionText);
+        Assert.assertEquals(resultsPage.getErrorText(), errorText);
     }
     
     @AfterMethod(alwaysRun = true)

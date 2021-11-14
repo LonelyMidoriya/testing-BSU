@@ -22,15 +22,15 @@ public class TicketsBusPage {
 
     private By buttonSearch = By.xpath("//div[@class='form-group__btn-search'] ");
 
-    private By exeptiontext = By.xpath("//p[@class='popup-info__text'] ");
+    private By errortext = By.xpath("//p[@class='popup-info__text'] ");
 
 
     public TicketsBusPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public String getExceptionText() {
-        return findElementByLocatorException(exeptiontext).getText();
+    public String getErrorText() {
+        return findElementByLocatorException(errortext).getText();
     }
 
     public TicketsBusPage clickButtonMinsk() {
@@ -57,8 +57,6 @@ public class TicketsBusPage {
         findElementByLocatorAndClickException(buttonSearch);
         return this;
     }
-
-
 
     private WebElement findElementByLocator(By locator) {
         return new WebDriverWait(driver, 60)
