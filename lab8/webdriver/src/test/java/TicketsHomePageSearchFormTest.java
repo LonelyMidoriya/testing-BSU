@@ -10,7 +10,7 @@ import page.TicketsBusPage;
 
 public class TicketsHomePageSearchFormTest {
     private WebDriver driver;
-    private FirefoxOptions options = new FirefoxOptions().setHeadless(false);
+    private FirefoxOptions options = new FirefoxOptions().setHeadless(true);
 
     private String exeptionText = "Станции отправления и прибытия совпадают. Измените, пожалуйста, данные для успешного поиска.";
 
@@ -21,7 +21,7 @@ public class TicketsHomePageSearchFormTest {
     }
     
     @Test
-    public void emptyDestinationField_bigGroupHint_maxNumberOfAdults_findHotelsTest() {
+    public void sameDepartureAndArrivalPlaces() {
         TicketsHomePage homePage = new TicketsHomePage(driver);
         
         TicketsBusPage resultsPage = homePage.openHomePage()

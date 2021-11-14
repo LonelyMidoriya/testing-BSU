@@ -18,7 +18,7 @@ public class TicketsBusPage {
 
     private By datePicker = By.xpath("//img[@class='ui-datepicker-trigger'] ");
 
-    private By currentDate = By.xpath("//a[@class='ui-state-default ui-state-highlight'] ");
+    private By currentDate = By.xpath("//a[@class='ui-state-default'] ");
 
     private By buttonSearch = By.xpath("//div[@class='form-group__btn-search'] ");
 
