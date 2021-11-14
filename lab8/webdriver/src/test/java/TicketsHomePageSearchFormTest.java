@@ -17,7 +17,7 @@ public class TicketsHomePageSearchFormTest {
     @BeforeMethod(alwaysRun = true)
     public void setupBrowser() {
         driver = new FirefoxDriver(options);
-        driver.manage().window();
+        //driver.manage().window();
     }
     
     @Test
