@@ -63,8 +63,6 @@ public class TicketsBusPage {
                         .presenceOfElementLocated(locator));
     }
 
-
-
     public WebElement findElementByLocatorAndClick(By locator) {
             WebElement element = findElementByLocator(locator);
             element.click();
