@@ -58,30 +58,16 @@ public class Airport {
                 .collect(Collectors.toList());
     }
 
-    public Airport sortByMaxDistance() {
-        planes.sort(new Comparator<Plane>() {
-            public int compare(Plane o1, Plane o2) {
-                return o1.getMaxFlightDistance() - o2.getMaxFlightDistance();
-            }
-        });
-        return this;
+    public void sortByMaxDistance() {
+        planes.sort(Comparator.comparingInt(Plane::getMaxFlightDistance));
     }
 
-    public Airport sortByMaxSpeed() {
-        planes.sort(new Comparator<Plane>() {
-            public int compare(Plane o1, Plane o2) {
-                return o1.getMaxSpeed() - o2.getMaxSpeed();
-            }
-        });
-        return this;
+    public void sortByMaxSpeed() {
+        planes.sort(Comparator.comparingInt(Plane::getMaxSpeed));
     }
 
     public void sortByMaxLoadCapacity() {
-        planes.sort(new Comparator<Plane>() {
-            public int compare(Plane o1, Plane o2) {
-                return o1.getMaxLoadCapacity() - o2.getMaxLoadCapacity();
-            }
-        });
+        planes.sort(Comparator.comparingInt(Plane::getMaxLoadCapacity));
     }
 
     @Override
