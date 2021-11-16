@@ -22,12 +22,12 @@ public class TicketsHomePage {
     }
 
     public TicketsHomePage openNavigationList() {
-        findElementByLocatorAndClickException(navigationList);
+        findElementByLocatorAndClick(navigationList);
         return this;
     }
 
     public TicketsBusPage openBusPage() {
-        findElementByLocatorAndClickException(buttonBusPage);
+        findElementByLocatorAndClick(buttonBusPage);
         return new TicketsBusPage(driver);
     }
 
@@ -37,15 +37,9 @@ public class TicketsHomePage {
                         .presenceOfElementLocated(locator));
     }
     
-    public WebElement findElementByLocatorAndClickException(By locator) {
-        try {
+    public WebElement findElementByLocatorAndClick(By locator) {
             WebElement element = findElementByLocator(locator);
             element.click();
             return element;
-        } catch (StaleElementReferenceException e) {
-            WebElement element = findElementByLocator(locator);
-            element.click();
-            return element;
-        }
     }
 }

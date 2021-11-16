@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import page.TicketsHomePage;
 import page.TicketsBusPage;
 
-public class TicketsHomePageSearchFormTest {
+public class TicketsBusPageTest {
     private WebDriver driver;
     private FirefoxOptions options = new FirefoxOptions().setHeadless(true);
 
@@ -17,11 +17,10 @@ public class TicketsHomePageSearchFormTest {
     @BeforeMethod(alwaysRun = true)
     public void setupBrowser() {
         driver = new FirefoxDriver(options);
-        //driver.manage().window();
     }
     
     @Test
-    public void sameDepartureAndArrivalPlaces() {
+    public void enterSameDepartureAndArrivalPlaces() {
         TicketsHomePage homePage = new TicketsHomePage(driver);
         
         TicketsBusPage resultsPage = homePage.openHomePage()

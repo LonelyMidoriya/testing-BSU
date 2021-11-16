@@ -1,7 +1,6 @@
 package page;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,31 +29,31 @@ public class TicketsBusPage {
     }
 
     public String getErrorText() {
-        return findElementByLocatorException(errortext).getText();
+        return findElementByLocator(errortext).getText();
     }
 
     public TicketsBusPage clickButtonMinsk() {
-        findElementByLocatorAndClickException(buttonMinsk);
+        findElementByLocatorAndClick(buttonMinsk);
         return this;
     }
 
     public TicketsBusPage clickButtonSwap() {
-        findElementByLocatorAndClickException(buttonSwap);
+        findElementByLocatorAndClick(buttonSwap);
         return this;
     }
 
     public TicketsBusPage openDatePicker() {
-        findElementByLocatorAndClickException(datePicker);
+        findElementByLocatorAndClick(datePicker);
         return this;
     }
 
     public TicketsBusPage selectDate() {
-        findElementByLocatorAndClickException(currentDate);
+        findElementByLocatorAndClick(currentDate);
         return this;
     }
 
     public TicketsBusPage clickButtonSearch() {
-        findElementByLocatorAndClickException(buttonSearch);
+        findElementByLocatorAndClick(buttonSearch);
         return this;
     }
 
@@ -64,24 +63,11 @@ public class TicketsBusPage {
                         .presenceOfElementLocated(locator));
     }
 
-    private WebElement findElementByLocatorException(By locator) {
-        try {
-            return findElementByLocator(locator);
-        } catch (StaleElementReferenceException e) {
-            return findElementByLocator(locator);
-        }
-    }
 
-    public WebElement findElementByLocatorAndClickException(By locator) {
-        try {
-            WebElement element = findElementByLocator(locator);
 
-            element.click();
-            return element;
-        } catch (StaleElementReferenceException e) {
+    public WebElement findElementByLocatorAndClick(By locator) {
             WebElement element = findElementByLocator(locator);
             element.click();
             return element;
-        }
     }
 }
