@@ -35,14 +35,4 @@ public class ExperimentalPlane extends Plane{
         ExperimentalPlane that = (ExperimentalPlane) o;
         return type == that.type && classificationLevel == that.classificationLevel;
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), type, classificationLevel);
-    }
-
-    @Override
-    public String toString() {
-        return super.toString().replace("}", "type=" + type + ", classificationLevel=" + classificationLevel + '}');
-    }
 }

@@ -40,9 +40,10 @@ public class AirportTest {
             = Comparator.comparingInt(Plane::getMaxLoadCapacity);
 
     private static final ClassificationLevel CLASSIFICATION_LEVEL_UNCLASSIFIED = ClassificationLevel.UNCLASSIFIED;
+
     @Test
     public void hasTransportMilitaryPlanesTest() {
-        Assert.assertFalse(new Airport(planes).getTransportMilitaryPlanes().isEmpty());
+        Assert.assertFalse(new Airport(planes).getMilitaryPlanesByCertainType(MilitaryType.TRANSPORT).isEmpty());
     }
 
     @Test
@@ -64,7 +65,7 @@ public class AirportTest {
 
     @Test
     public void hasBomberMilitaryPlanesTest() {
-        Assert.assertFalse(new Airport(planes).getBomberMilitaryPlanes().isEmpty());
+        Assert.assertFalse(new Airport(planes).getMilitaryPlanesByCertainType(MilitaryType.BOMBER).isEmpty());
     }
 
     @Test
