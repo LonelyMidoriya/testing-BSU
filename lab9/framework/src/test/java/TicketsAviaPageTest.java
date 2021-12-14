@@ -7,7 +7,7 @@ import util.CommonConditions;
 
 public class TicketsAviaPageTest extends CommonConditions {
     private String errorText = "Максимум 9 пассажиров";
-    private static final String LOCATION = "Афины";
+    private static final String LOCATION = "Кливленд";
     @Test
     public void findAviaTest(){
         TicketsHomePage homePage = new TicketsHomePage(driver);
