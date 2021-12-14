@@ -75,6 +75,9 @@ public class TicketsAviaPage extends AbstractPage{
     public TicketsAviaPage enterPlaceTo(String place) {
         LOGGER.log(Level.INFO, "Data was entered");
         findElementByLocatorAndClick(placeTo).sendKeys(place);
+        WebDriverWait webDriverWait = new WebDriverWait(driver, 5);
+        webDriverWait.until(ExpectedConditions
+                .elementToBeClickable(text));
         findElementByLocatorAndClick(text);
         return this;
     }
