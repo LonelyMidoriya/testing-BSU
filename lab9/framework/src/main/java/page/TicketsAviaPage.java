@@ -42,7 +42,7 @@ public class TicketsAviaPage extends AbstractPage{
 
     private By topSpaceBetween = By.xpath("//h1[@class='app-header-title'] ");
 
-    private By text = By.xpath("//div[@class='double-autocomplete__item ltr'] ");
+    private By text = By.xpath("//li[@class='bg-1 t-select__item'] ");
 
     public TicketsAviaPage(WebDriver driver) {
         super(driver);
