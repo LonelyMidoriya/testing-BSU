@@ -9,7 +9,9 @@ import org.openqa.selenium.WebElement;
 public class TicketsAviaResultsPage extends AbstractPage {
     private static final Logger LOGGER = LogManager.getRootLogger();
 
+
     private By locator = By.xpath("//img[@src='https://static.tickets.by/img/v3/login_logo.svg?706212bdd9']");
+
 
     protected TicketsAviaResultsPage(WebDriver driver) {
         super(driver);

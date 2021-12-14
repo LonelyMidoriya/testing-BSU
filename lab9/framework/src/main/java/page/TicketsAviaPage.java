@@ -22,7 +22,7 @@ public class TicketsAviaPage extends AbstractPage{
 
     private By placeToText = By.xpath("//input[@class='t-autocomplete-v2__input theme-default'] ");
 
-    private By placeTo = By.xpath("//div[@class='double-autocomplete__item ltr'] ");
+    private By placeTo = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[2]/menu/div/li/div/input ");
 
     private By datePicker = By.xpath("//button[@class='t-date-picker__activator ltr bg-1 theme-default multiple departure'] ");
 
@@ -40,8 +40,9 @@ public class TicketsAviaPage extends AbstractPage{
 
     private By buttonAddPassenger = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[2]/div[2]/div/menu/div/div/div[1]/div/div[1]/div/div[2]/button[2]");
 
-    private By topSpaceBetween = By.xpath("//div[@class='f-top-space-between'] ");
+    private By topSpaceBetween = By.xpath("//h1[@class='app-header-title'] ");
 
+    private By text = By.xpath("//div[@class='double-autocomplete__item ltr'] ");
 
     public TicketsAviaPage(WebDriver driver) {
         super(driver);
@@ -71,9 +72,10 @@ public class TicketsAviaPage extends AbstractPage{
         return this;
     }
 
-    public TicketsAviaPage enterPlaceTo() {
+    public TicketsAviaPage enterPlaceTo(String place) {
         LOGGER.log(Level.INFO, "Data was entered");
-        findElementByLocatorAndClick(placeTo);
+        findElementByLocatorAndClick(placeTo).sendKeys(place);
+        findElementByLocatorAndClick(text);
         return this;
     }
 

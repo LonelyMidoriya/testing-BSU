@@ -20,7 +20,7 @@ public class DriverSingleton {
                 return driver;
             }
             WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver(new FirefoxOptions().setHeadless(true));
+            driver = new FirefoxDriver(new FirefoxOptions().setHeadless(false));
 
             driver.manage().window().maximize();
         }
