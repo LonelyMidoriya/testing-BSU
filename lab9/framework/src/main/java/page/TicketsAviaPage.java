@@ -42,7 +42,7 @@ public class TicketsAviaPage extends AbstractPage{
 
     private By topSpaceBetween = By.xpath("//h1[@class='app-header-title'] ");
 
-    private By text = By.xpath("//div[text()='Кливленд, США ' and @class='double-autocomplete__item__text']");
+    private By text = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[2]/menu/div/ul/li[1]/div/div[1]/div");
 
     public TicketsAviaPage(WebDriver driver) {
         super(driver);
@@ -76,6 +76,7 @@ public class TicketsAviaPage extends AbstractPage{
         LOGGER.log(Level.INFO, "Data was entered");
         findElementByLocatorAndClick(placeTo).sendKeys(place);
         WebDriverWait webDriverWait = new WebDriverWait(driver, 5);
+
         webDriverWait.until(ExpectedConditions
                 .elementToBeClickable(text));
         findElementByLocatorAndClick(text);
