@@ -16,11 +16,13 @@ public class TicketsAviaPage extends AbstractPage{
 
     private By toField = By.xpath("//div[text()='Куда ' and @class='t-select__placeholder'] ");
 
-    private By placeFrom = By.xpath("//div[@class='double-autocomplete__item current selected ltr'] ");
+    private By placeFrom = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[1]/menu/div/li/div/input");
 
     private By placeFromText = By.xpath("//input[@class='t-autocomplete-v2__input theme-default'] ");
 
     private By placeToText = By.xpath("//input[@class='t-autocomplete-v2__input theme-default'] ");
+
+    private By denyButton = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[1]/menu/div/li/div/button");
 
     private By placeTo = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[2]/menu/div/li/div/input ");
 
@@ -42,7 +44,9 @@ public class TicketsAviaPage extends AbstractPage{
 
     private By topSpaceBetween = By.xpath("//h1[@class='app-header-title'] ");
 
-    private By text = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[2]/menu/div/ul/li[1]/div/div[1]/div");
+    private By divPlaceTo = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[2]/menu/div/ul/li[1]/div/div[1]/div");
+
+    private By divPlaceFrom = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[1]/menu/div/ul/li/div/div[1]/div");
 
     public TicketsAviaPage(WebDriver driver) {
         super(driver);
@@ -66,9 +70,14 @@ public class TicketsAviaPage extends AbstractPage{
         return this;
     }
 
-    public TicketsAviaPage enterPlaceFrom() {
+    public TicketsAviaPage enterPlaceFrom(String place) {
         LOGGER.log(Level.INFO, "Data was entered");
-        findElementByLocatorAndClick(placeFrom);
+        findElementByLocatorAndClick(denyButton);
+        findElementByLocatorAndClick(placeFrom).sendKeys(place);
+        WebDriverWait webDriverWait = new WebDriverWait(driver, 5);
+        webDriverWait.until(ExpectedConditions
+                .elementToBeClickable(divPlaceFrom));
+        findElementByLocatorAndClick(divPlaceFrom);
         return this;
     }
 
@@ -76,10 +85,9 @@ public class TicketsAviaPage extends AbstractPage{
         LOGGER.log(Level.INFO, "Data was entered");
         findElementByLocatorAndClick(placeTo).sendKeys(place);
         WebDriverWait webDriverWait = new WebDriverWait(driver, 5);
-
         webDriverWait.until(ExpectedConditions
-                .elementToBeClickable(text));
-        findElementByLocatorAndClick(text);
+                .elementToBeClickable(divPlaceTo));
+        findElementByLocatorAndClick(divPlaceTo);
         return this;
     }
 

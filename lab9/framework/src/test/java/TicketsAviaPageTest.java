@@ -7,7 +7,8 @@ import util.CommonConditions;
 
 public class TicketsAviaPageTest extends CommonConditions {
     private String errorText = "Максимум 9 пассажиров";
-    private static final String LOCATION = "Кливленд";
+    private static final String LOCATIONFROM = "Москва";
+    private static final String LOCATIONTO = "Кливленд";
     @Test
     public void findAviaTest(){
         TicketsHomePage homePage = new TicketsHomePage(driver);
@@ -17,9 +18,9 @@ public class TicketsAviaPageTest extends CommonConditions {
                 .openAviaPage();
 
         TicketsAviaResultsPage resultsPage = aviaPage.openFromField()
-                .enterPlaceFrom()
+                .enterPlaceFrom(LOCATIONFROM)
                 .openToField()
-                .enterPlaceTo(LOCATION).clickTopSpace()
+                .enterPlaceTo(LOCATIONTO).clickTopSpace()
                 .openDatePicker()
                 .selectDate()
                 .clickButtonOneWay()
@@ -48,7 +49,7 @@ public class TicketsAviaPageTest extends CommonConditions {
                 .openNavigationList()
                 .openAviaPage();
 
-        aviaPage.openFromField().enterPlaceFrom().openToField().enterPlaceTo(LOCATION);
+        aviaPage.openFromField().enterPlaceFrom(LOCATIONFROM).openToField().enterPlaceTo(LOCATIONTO);
 
         String[] placesBeforeSwap = {aviaPage.openFromField().getPlaceFromText(), aviaPage.openToField().getPlaceToText()};
 
