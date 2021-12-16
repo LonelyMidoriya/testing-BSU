@@ -9,9 +9,9 @@ import org.openqa.selenium.WebDriver;
 public class TicketsGdPage extends AbstractPage {
     private static final Logger LOGGER = LogManager.getRootLogger();
 
-    private By fromField = By.xpath("//div[text()='Откуда ' and @class='t-select__placeholder'] ");
+    private By fromField = By.xpath("/html/body/header/div/div[3]/section/div/form/div/div[1]/div[1]/div/button/div");
 
-    private By toField = By.xpath("//div[text()='Куда ' and @class='t-select__placeholder'] ");
+    private By toField = By.xpath("/html/body/header/div/div[3]/section/div/form/div/div[1]/div[2]/div/button/div ");
 
     private By placeFrom = By.xpath("//a[@class='search-form-railway-autocomplete-item__item'] ");
 

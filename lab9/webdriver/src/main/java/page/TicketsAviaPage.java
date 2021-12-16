@@ -12,9 +12,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class TicketsAviaPage extends AbstractPage{
     private static final Logger LOGGER = LogManager.getRootLogger();
 
-    private By fromField = By.xpath("//div[text()='Откуда ' and @class='t-select__placeholder'] ");
+    private By fromField = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[1]/div/button/div[1]");
 
-    private By toField = By.xpath("//div[text()='Куда ' and @class='t-select__placeholder'] ");
+    private By toField = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[2]/div/button/div[1]");
 
     private By placeFrom = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[1]/menu/div/li/div/input");
 

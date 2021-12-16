@@ -12,9 +12,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class TicketsBusPage extends AbstractPage {
     private static final Logger LOGGER = LogManager.getRootLogger();
 
-    private By buttonMinsk = By.xpath("//a[text()='Минск' and @class='ipc_city '] ");
+    private By buttonMinsk = By.xpath("/html/body/div[1]/div[1]/div/div/div/form/div[1]/div[1]/div[2]/a[1] ");
 
-    private By buttonVitebsk = By.xpath("//a[text()='Витебск' and @class='ipc_city seatch_helper_to'] ");
+    private By buttonVitebsk = By.xpath("/html/body/div[1]/div[1]/div/div/div/form/div[1]/div[2]/div[2]/a[2] ");
 
     private By buttonSwap = By.xpath("//a[@class='swap'] ");
 
