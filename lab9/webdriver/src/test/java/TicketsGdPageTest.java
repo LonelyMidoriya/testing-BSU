@@ -4,10 +4,6 @@ import page.*;
 import util.CommonConditions;
 
 public class TicketsGdPageTest extends CommonConditions {
-    private String errorText = "Это поле необходимо заполнить";
-
-    private String errorPlace = "Вы не указали маршрут";
-
     private static final String LOCATIONFROM = "Москва";
     private static final String LOCATIONTO = "Минск";
 
@@ -42,7 +38,7 @@ public class TicketsGdPageTest extends CommonConditions {
                 .openToField()
                 .enterPlaceTo(LOCATIONTO)
                 .clickButtonSearch();
-        Assert.assertTrue(GdPage.getDateErrorText().equals(errorText));
+        Assert.assertTrue(GdPage.isErrorTextVisiable());
     }
 
     @Test
@@ -54,6 +50,6 @@ public class TicketsGdPageTest extends CommonConditions {
                 .openGdPage();
 
         GdPage.openDatePickerDefault();
-        Assert.assertTrue(GdPage.getPlaceFromAndPlaceToErrorText().equals(errorPlace));
+        Assert.assertTrue(GdPage.isPlaceFromAndPlaceToErrorTextVisiable());
     }
 }

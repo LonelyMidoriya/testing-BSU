@@ -1,8 +1,10 @@
+import model.Location;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.TicketsAviaPage;
 import page.TicketsAviaResultsPage;
 import page.TicketsHomePage;
+import service.LocationsCreator;
 import util.CommonConditions;
 
 public class TicketsAviaPageTest extends CommonConditions {
@@ -12,15 +14,15 @@ public class TicketsAviaPageTest extends CommonConditions {
     @Test
     public void findAviaTest(){
         TicketsHomePage homePage = new TicketsHomePage(driver);
-
+        Location testLocations = LocationsCreator.locationsFromProperty();
         TicketsAviaPage aviaPage = homePage.openHomePage()
                 .openNavigationList()
                 .openAviaPage();
 
         TicketsAviaResultsPage resultsPage = aviaPage.openFromField()
-                .enterPlaceFrom(LOCATIONFROM)
+                .enterPlaceFrom(testLocations.getFromLocation())
                 .openToField()
-                .enterPlaceTo(LOCATIONTO).clickTopSpace()
+                .enterPlaceTo(testLocations.getToLocation()).clickTopSpace()
                 .openDatePicker()
                 .selectDate()
                 .clickButtonOneWay()
@@ -44,12 +46,13 @@ public class TicketsAviaPageTest extends CommonConditions {
     @Test
     public void buttonSwapTest(){
         TicketsHomePage homePage = new TicketsHomePage(driver);
-
+        Location testLocations = LocationsCreator.locationsFromProperty();
         TicketsAviaPage aviaPage = homePage.openHomePage()
                 .openNavigationList()
                 .openAviaPage();
 
-        aviaPage.openFromField().enterPlaceFrom(LOCATIONFROM).openToField().enterPlaceTo(LOCATIONTO);
+        aviaPage.openFromField().enterPlaceFrom(testLocations.getFromLocation())
+                .openToField().enterPlaceTo(testLocations.getToLocation());
 
         String[] placesBeforeSwap = {aviaPage.openFromField().getPlaceFromText(), aviaPage.openToField().getPlaceToText()};
 

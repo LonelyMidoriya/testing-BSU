@@ -6,8 +6,6 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TicketsBusPage extends AbstractPage {
     private static final Logger LOGGER = LogManager.getRootLogger();
@@ -24,23 +22,23 @@ public class TicketsBusPage extends AbstractPage {
 
     private By buttonSearch = By.xpath("//div[@class='form-group__btn-search'] ");
 
-    private By errortext = By.xpath("//p[@class='popup-info__text'] ");
+    private By errortext = By.xpath("/html/body/div[2]/div/div[1]/div/div[2]/p");
 
-    private By errorArrivalplacetext = By.xpath("//samp[@class='error'] ");
+    private By errorArrivalPlaceText = By.xpath("/html/body/div[1]/div[1]/div/div/div/form/div[1]/div[2]/div[1]/samp[2]");
 
 
     public TicketsBusPage(WebDriver driver) {
         super(driver);
     }
 
-    public String getErrorText() {
-        LOGGER.log(Level.INFO, "Getting error text");
-        return findElementByLocator(errortext).getText();
+    public boolean isErrorTextVisiable() {
+        LOGGER.log(Level.INFO, " Checking error");
+        return findElementByLocator(errortext).isDisplayed();
     }
 
-    public String getErrorArrivalPlaceText() {
-        LOGGER.log(Level.INFO, "Getting error text");
-        return findElementByLocator(errorArrivalplacetext).getText();
+    public boolean isErrorArrivalPlaceTextVisiable() {
+        LOGGER.log(Level.INFO, " Checking error");
+        return findElementByLocator(errorArrivalPlaceText).isDisplayed();
     }
 
     public TicketsBusPage clickButtonMinsk() {

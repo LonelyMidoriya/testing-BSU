@@ -11,9 +11,6 @@ import page.TicketsHomePage;
 import util.CommonConditions;
 
 public class TicketsBusPageTest extends CommonConditions {
-    private String errorText = "Станции отправления и прибытия совпадают. Измените, пожалуйста, данные для успешного поиска.";
-
-    private String errorArrivalPlaceText = "Это поле необходимо заполнить";
 
     
     @Test
@@ -30,8 +27,7 @@ public class TicketsBusPageTest extends CommonConditions {
                     .openDatePicker()
                     .selectDate()
                     .clickButtonSearch();
-
-        Assert.assertEquals(resultsPage.getErrorText(), errorText);
+        Assert.assertTrue(resultsPage.isErrorTextVisiable());
     }
 
     @Test
@@ -63,7 +59,7 @@ public class TicketsBusPageTest extends CommonConditions {
                 .selectDate()
                 .clickButtonSearch();
 
-        Assert.assertEquals(busPage.getErrorArrivalPlaceText(), errorArrivalPlaceText);
+        Assert.assertTrue(busPage.isErrorArrivalPlaceTextVisiable());
     }
 
 }

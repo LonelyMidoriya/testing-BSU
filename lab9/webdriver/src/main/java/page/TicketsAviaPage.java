@@ -146,6 +146,7 @@ public class TicketsAviaPage extends AbstractPage{
 
     public String getPassengerErrorText() {
         LOGGER.log(Level.INFO, "Getting error text");
+        //LOGGER.log(Level.INFO, findElementByLocator(passengerError).getText());
         return findElementByLocator(passengerError).getText();
     }
 

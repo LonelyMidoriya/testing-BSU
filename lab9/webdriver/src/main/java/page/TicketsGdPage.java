@@ -56,7 +56,7 @@ public class TicketsGdPage extends AbstractPage {
         LOGGER.log(Level.INFO, "Data was entered");
         findElementByLocatorAndClick(placeFromText).sendKeys(place);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -68,7 +68,7 @@ public class TicketsGdPage extends AbstractPage {
         LOGGER.log(Level.INFO, "Data was entered");
         findElementByLocatorAndClick(placeToText).sendKeys(place);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -100,13 +100,13 @@ public class TicketsGdPage extends AbstractPage {
         return new TicketsGdResultsPage(driver);
     }
 
-    public String getDateErrorText() {
-        LOGGER.log(Level.INFO, "Getting error text");
-        return findElementByLocator(dateError).getText();
+    public boolean isErrorTextVisiable() {
+        LOGGER.log(Level.INFO, " Checking error");
+        return findElementByLocator(dateError).isDisplayed();
     }
 
-    public String getPlaceFromAndPlaceToErrorText() {
-        LOGGER.log(Level.INFO, "Getting error text");
-        return findElementByLocator(placeFromAndPlaceToError).getText();
+    public boolean isPlaceFromAndPlaceToErrorTextVisiable() {
+        LOGGER.log(Level.INFO, " Checking error");
+        return findElementByLocator(placeFromAndPlaceToError).isDisplayed();
     }
 }
