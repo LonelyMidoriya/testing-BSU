@@ -31,6 +31,32 @@ public class TicketsAviaPageTest extends CommonConditions {
     }
 
     @Test
+    public void findComplexAviaTest(){
+        TicketsHomePage homePage = new TicketsHomePage(driver);
+        Location testLocations = LocationsCreator.locationsFromProperty();
+        TicketsAviaPage aviaPage = homePage.openHomePage()
+                .openNavigationList()
+                .openAviaPage();
+
+        TicketsAviaResultsPage resultsPage = aviaPage.openFromField()
+                .enterPlaceFrom(testLocations.getFromLocation())
+                .openToField()
+                .enterPlaceTo(testLocations.getToLocation()).clickTopSpace()
+                .openDatePicker()
+                .selectDate()
+                .clickButtonComplexFlight()
+                .openComplexFromField()
+                .enterComplexPlaceFrom(testLocations.getToLocation())
+                .openComplexToField()
+                .enterComplexPlaceTo(testLocations.getFromLocation())
+                .clickTopSpace()
+                .openComplexDatePicker()
+                .selectComplexDate()
+                .clickButtonSearch();
+        Assert.assertTrue(resultsPage.isInitialized());
+    }
+
+    @Test
     public void addMaxPassengerTest(){
         TicketsHomePage homePage = new TicketsHomePage(driver);
 

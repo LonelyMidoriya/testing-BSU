@@ -16,7 +16,17 @@ public class TicketsAviaPage extends AbstractPage{
 
     private By toField = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[2]/div/button/div[1]");
 
+    private By complexFromField = By.xpath("/html/body/header/div/div[3]/div/form/div[2]/div/div[1]/div[1]/div/button/div[1]");
+
+    private By complexToField = By.xpath("/html/body/header/div/div[3]/div/form/div[2]/div/div[1]/div[2]/div/button/div[1]");
+
     private By placeFrom = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[1]/menu/div/li/div/input");
+
+    private By placeTo = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[2]/menu/div/li/div/input");
+
+    private By complexPlaceFrom = By.xpath("/html/body/header/div/div[3]/div/form/div[2]/div/div[1]/div[1]/menu/div/li/div/input");
+
+    private By complexPlaceTo = By.xpath("/html/body/header/div/div[3]/div/form/div[2]/div/div[1]/div[2]/menu/div/li/div/input");
 
     private By placeFromText = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[1]/menu/div/li/div/input ");
 
@@ -24,11 +34,13 @@ public class TicketsAviaPage extends AbstractPage{
 
     private By denyButton = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[1]/menu/div/li/div/button");
 
-    private By placeTo = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[2]/menu/div/li/div/input");
-
     private By datePicker = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[2]/div[1]/div/button[1]/div");
 
     private By currentDate = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[2]/div[1]/menu/div/div/div[1]/div/div[2]/div[3]/div[4]/button");
+
+    private By complexDatePicker = By.xpath("/html/body/header/div/div[3]/div/form/div[2]/div/div[2]/div[1]/div/button");
+
+    private By complexCurrentDate = By.xpath("/html/body/header/div/div[3]/div/form/div[2]/div/div[2]/div[1]/menu/div/div/div/div/div[2]/div[5]/div[5]/button");
 
     private By oneWay = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[2]/div[1]/menu/div/div/div[2]/div/div[2]/button");
 
@@ -47,6 +59,12 @@ public class TicketsAviaPage extends AbstractPage{
     private By divPlaceTo = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[2]/menu/div/ul/li[1]/div/div[1]/div");
 
     private By divPlaceFrom = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[1]/menu/div/ul/li[1]/div/div[1]/div");
+
+    private By divComplexPlaceTo = By.xpath("/html/body/header/div/div[3]/div/form/div[2]/div/div[1]/div[2]/menu/div/ul/li[1]/div/div[1]/div");
+
+    private By divComplexPlaceFrom = By.xpath("/html/body/header/div/div[3]/div/form/div[2]/div/div[1]/div[1]/menu/div/ul/li/div/div[1]/div");
+
+    private By comlexFlight = By.xpath("/html/body/header/div/div[3]/div/div/div/div/button/span ");
 
     public TicketsAviaPage(WebDriver driver) {
         super(driver);
@@ -70,6 +88,18 @@ public class TicketsAviaPage extends AbstractPage{
         return this;
     }
 
+    public TicketsAviaPage openComplexToField() {
+        LOGGER.log(Level.INFO, "Complex To field was opened");
+        findElementByLocatorAndClick(complexToField);
+        return this;
+    }
+
+    public TicketsAviaPage openComplexFromField() {
+        LOGGER.log(Level.INFO, "Complex from field was opened");
+        findElementByLocatorAndClick(complexFromField);
+        return this;
+    }
+
     public TicketsAviaPage enterPlaceFrom(String place) {
         LOGGER.log(Level.INFO, "Data was entered");
         findElementByLocatorAndClick(denyButton);
@@ -80,6 +110,30 @@ public class TicketsAviaPage extends AbstractPage{
             e.printStackTrace();
         }
         findElementByLocatorAndClick(divPlaceFrom);
+        return this;
+    }
+
+    public TicketsAviaPage enterComplexPlaceFrom(String place) {
+        LOGGER.log(Level.INFO, "Data was entered");
+        findElementByLocatorAndClick(complexPlaceFrom).sendKeys(place);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        findElementByLocatorAndClick(divComplexPlaceFrom);
+        return this;
+    }
+
+    public TicketsAviaPage enterComplexPlaceTo(String place) {
+        LOGGER.log(Level.INFO, "Data was entered");
+        findElementByLocatorAndClick(complexPlaceTo).sendKeys(place);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        findElementByLocatorAndClick(divComplexPlaceTo);
         return this;
     }
 
@@ -101,15 +155,33 @@ public class TicketsAviaPage extends AbstractPage{
         return this;
     }
 
+    public TicketsAviaPage openComplexDatePicker() {
+        LOGGER.log(Level.INFO, "Datepicker was opened");
+        findElementByLocatorAndClick(complexDatePicker);
+        return this;
+    }
+
     public TicketsAviaPage selectDate() {
         LOGGER.log(Level.INFO, "The date has been selected");
         findElementByLocatorAndClick(currentDate);
         return this;
     }
 
+    public TicketsAviaPage selectComplexDate() {
+        LOGGER.log(Level.INFO, "The date has been selected");
+        findElementByLocatorAndClick(complexCurrentDate);
+        return this;
+    }
+
     public TicketsAviaPage clickButtonOneWay() {
         LOGGER.log(Level.INFO, "The button one way was clicked");
         findElementByLocatorAndClick(oneWay);
+        return this;
+    }
+
+    public TicketsAviaPage clickButtonComplexFlight() {
+        LOGGER.log(Level.INFO, "The button one way was clicked");
+        findElementByLocatorAndClick(comlexFlight);
         return this;
     }
 
@@ -146,7 +218,6 @@ public class TicketsAviaPage extends AbstractPage{
 
     public String getPassengerErrorText() {
         LOGGER.log(Level.INFO, "Getting error text");
-        //LOGGER.log(Level.INFO, findElementByLocator(passengerError).getText());
         return findElementByLocator(passengerError).getText();
     }
 
