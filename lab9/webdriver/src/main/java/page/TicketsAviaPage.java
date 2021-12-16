@@ -38,7 +38,7 @@ public class TicketsAviaPage extends AbstractPage{
 
     private By passengerField = By.xpath("//button[@class='t-search-form-activator pl-1 pr-1 rel cursor-pointer theme-default search-form-avia-passengers-select-v2-activator'] ");
 
-    private By passengerError = By.xpath("//div[text()='Максимум 9 пассажиров' and @class='t-counter__error ltr'] ");
+    private By passengerError = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[2]/div[2]/div/menu/div/div/div[1]/div/div[1]/div/div[1]/div[1]/div[2]/div/div");
 
     private By buttonAddPassenger = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[2]/div[2]/div/menu/div/div/div[1]/div/div[1]/div/div[2]/button[2]");
 
