@@ -17,11 +17,11 @@ public class DriverSingleton {
             if ("chrome".equals(System.getProperty("browser"))) {
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
+                driver.manage().window().maximize();
                 return driver;
             }
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver(new FirefoxOptions().setHeadless(true));
-
             driver.manage().window().maximize();
         }
 

@@ -18,23 +18,23 @@ public class TicketsAviaPage extends AbstractPage{
 
     private By placeFrom = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[1]/menu/div/li/div/input");
 
-    private By placeFromText = By.xpath("//input[@class='t-autocomplete-v2__input theme-default'] ");
+    private By placeFromText = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[1]/menu/div/li/div/input ");
 
-    private By placeToText = By.xpath("//input[@class='t-autocomplete-v2__input theme-default'] ");
+    private By placeToText = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[2]/menu/div/li/div/input");
 
     private By denyButton = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[1]/menu/div/li/div/button");
 
-    private By placeTo = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[2]/menu/div/li/div/input ");
+    private By placeTo = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[2]/menu/div/li/div/input");
 
-    private By datePicker = By.xpath("//button[@class='t-date-picker__activator ltr bg-1 theme-default multiple departure'] ");
+    private By datePicker = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[2]/div[1]/div/button[1]/div");
 
-    private By currentDate = By.xpath("//div[@class='t-calendar__month__week__day ltr theme-default'] ");
+    private By currentDate = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[2]/div[1]/menu/div/div/div[1]/div/div[2]/div[3]/div[4]/button");
 
-    private By oneWay = By.xpath("//button[@class='t-btn theme-default _bordered'] ");
+    private By oneWay = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[2]/div[1]/menu/div/div/div[2]/div/div[2]/button");
 
-    private By buttonSwap = By.xpath("//button[@class='double-autocomplete__swap theme-default ltr bg-1'] ");
+    private By buttonSwap = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/button");
 
-    private By buttonSearch = By.xpath("//button[@class='t-btn _size-xl theme-default main-search-inner-form__submit'] ");
+    private By buttonSearch = By.xpath("/html/body/header/div/div[3]/div/form/div/div[2]/button");
 
     private By passengerField = By.xpath("//button[@class='t-search-form-activator pl-1 pr-1 rel cursor-pointer theme-default search-form-avia-passengers-select-v2-activator'] ");
 
@@ -46,7 +46,7 @@ public class TicketsAviaPage extends AbstractPage{
 
     private By divPlaceTo = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[2]/menu/div/ul/li[1]/div/div[1]/div");
 
-    private By divPlaceFrom = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[1]/menu/div/ul/li/div/div[1]/div");
+    private By divPlaceFrom = By.xpath("/html/body/header/div/div[3]/div/form/div/div[1]/div/div[1]/div[1]/menu/div/ul/li[1]/div/div[1]/div");
 
     public TicketsAviaPage(WebDriver driver) {
         super(driver);
@@ -74,9 +74,11 @@ public class TicketsAviaPage extends AbstractPage{
         LOGGER.log(Level.INFO, "Data was entered");
         findElementByLocatorAndClick(denyButton);
         findElementByLocatorAndClick(placeFrom).sendKeys(place);
-        WebDriverWait webDriverWait = new WebDriverWait(driver, 5);
-        webDriverWait.until(ExpectedConditions
-                .elementToBeClickable(divPlaceFrom));
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         findElementByLocatorAndClick(divPlaceFrom);
         return this;
     }
@@ -84,9 +86,11 @@ public class TicketsAviaPage extends AbstractPage{
     public TicketsAviaPage enterPlaceTo(String place) {
         LOGGER.log(Level.INFO, "Data was entered");
         findElementByLocatorAndClick(placeTo).sendKeys(place);
-        WebDriverWait webDriverWait = new WebDriverWait(driver, 5);
-        webDriverWait.until(ExpectedConditions
-                .elementToBeClickable(divPlaceTo));
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         findElementByLocatorAndClick(divPlaceTo);
         return this;
     }

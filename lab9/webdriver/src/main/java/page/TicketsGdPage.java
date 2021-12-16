@@ -5,26 +5,32 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TicketsGdPage extends AbstractPage {
     private static final Logger LOGGER = LogManager.getRootLogger();
 
     private By fromField = By.xpath("/html/body/header/div/div[3]/section/div/form/div/div[1]/div[1]/div/button/div");
 
-    private By toField = By.xpath("/html/body/header/div/div[3]/section/div/form/div/div[1]/div[2]/div/button/div ");
+    private By toField = By.xpath("/html/body/header/div/div[3]/section/div/form/div/div[1]/div[2]/div/button/div");
 
-    private By placeFrom = By.xpath("//a[@class='search-form-railway-autocomplete-item__item'] ");
+    private By placeFromText = By.xpath("/html/body/header/div/div[3]/section/div/form/div/div[1]/div[1]/menu/div/li/div/input");
+
+    private By placeToText = By.xpath("/html/body/header/div/div[3]/section/div/form/div/div[1]/div[2]/menu/div/li/div/input");
+
+    private By placeFrom = By.xpath("/html/body/header/div/div[3]/section/div/form/div/div[1]/div[1]/menu/div/ul/li[1]/section/a ");
 
     private By placeTo = By.xpath("/html/body/header/div/div[3]/section/div/form/div/div[1]/div[2]/menu/div/ul/li[2]/section/a");
 
-    private By datePicker = By.xpath("//button[@class='t-date-picker__activator ltr bg-1 theme-default'] ");
+    private By datePicker = By.xpath("/html/body/header/div/div[3]/section/div/form/div/div[1]/div[3]/div/div/button");
 
-    private By datePickerDefault = By.xpath("//button[@class='t-btn theme-default _flat search-form-railway__button-calendar'] ");
+    private By datePickerDefault = By.xpath("/html/body/header/div/div[3]/section/div/form/div/div[1]/div[3]/button");
 
 
-    private By currentDate = By.xpath("//div[@class='t-price color21 theme-default search-form-railway__calendar-price'] ");
+    private By currentDate = By.xpath("/html/body/header/div/div[3]/section/div/form/div/div[1]/div[3]/div/menu/div/div/div[1]/div/div[2]/div[3]/div[4]/button");
 
-    private By buttonSearch = By.xpath("//button[@class='t-btn _size-xl theme-default main-search-inner-form__submit'] ");
+    private By buttonSearch = By.xpath("/html/body/header/div/div[3]/section/div/form/div/div[2]/button");
 
     private By dateError = By.xpath("//div[@class='t-date-picker__error-message'] ");
 
@@ -46,14 +52,26 @@ public class TicketsGdPage extends AbstractPage {
         return this;
     }
 
-    public TicketsGdPage enterPlaceFrom() {
+    public TicketsGdPage enterPlaceFrom(String place) {
         LOGGER.log(Level.INFO, "Data was entered");
+        findElementByLocatorAndClick(placeFromText).sendKeys(place);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         findElementByLocatorAndClick(placeFrom);
         return this;
     }
 
-    public TicketsGdPage enterPlaceTo() {
+    public TicketsGdPage enterPlaceTo(String place) {
         LOGGER.log(Level.INFO, "Data was entered");
+        findElementByLocatorAndClick(placeToText).sendKeys(place);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         findElementByLocatorAndClick(placeTo);
         return this;
     }

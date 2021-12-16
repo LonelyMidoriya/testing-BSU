@@ -7,6 +7,10 @@ public class TicketsGdPageTest extends CommonConditions {
     private String errorText = "Это поле необходимо заполнить";
 
     private String errorPlace = "Вы не указали маршрут";
+
+    private static final String LOCATIONFROM = "Москва";
+    private static final String LOCATIONTO = "Минск";
+
     @Test
     public void findGdTest(){
         TicketsHomePage homePage = new TicketsHomePage(driver);
@@ -16,9 +20,9 @@ public class TicketsGdPageTest extends CommonConditions {
                 .openGdPage();
 
         TicketsGdResultsPage resultsPage = GdPage.openFromField()
-                .enterPlaceFrom()
+                .enterPlaceFrom(LOCATIONFROM)
                 .openToField()
-                .enterPlaceTo()
+                .enterPlaceTo(LOCATIONTO)
                 .openDatePicker()
                 .selectDate()
                 .clickButtonSearch();
@@ -34,9 +38,9 @@ public class TicketsGdPageTest extends CommonConditions {
                 .openGdPage();
 
         GdPage.openFromField()
-                .enterPlaceFrom()
+                .enterPlaceFrom(LOCATIONFROM)
                 .openToField()
-                .enterPlaceTo()
+                .enterPlaceTo(LOCATIONTO)
                 .clickButtonSearch();
         Assert.assertTrue(GdPage.getDateErrorText().equals(errorText));
     }
